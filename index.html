@@ -403,7 +403,7 @@
             container.innerHTML = '<p class="no-result">Searching...</p>';
 
             try {
-                const res = await fetch(`/api/recommend?q=${encodeURIComponent(q)}`);
+                const res = await fetch(`recommend.php?q=${encodeURIComponent(q)}`);
                 const data = await res.json();
 
                 if (!data.results.length) {
