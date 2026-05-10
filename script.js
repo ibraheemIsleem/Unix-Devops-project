@@ -60,10 +60,10 @@
                 catalogOpen ? '[ hide catalog ]' : '[ view full catalog ]';
 
             if (catalogOpen && !catalogLoaded) {
-                const res = await fetch('/api/items');
+                const res = await fetch('recommend.php?all=true');
                 const data = await res.json();
                 const grid = document.getElementById('catalog-grid');
-                grid.innerHTML = data.items.map(i => `
+                grid.innerHTML = data.results.map(i => `
           <div class="cat-row">
             <span class="cat-kw">${i.keyword}</span>
             <span class="cat-rec">${i.recommendation}</span>

@@ -16,6 +16,29 @@ if ($conn->connect_error) {
 
 $response = ["results" => []];
 
+
+if (isset($_GET['all']) && $_GET['all'] === 'true') {
+    
+    $sql = "SELECT user_input, recommended_item FROM recommendations";
+    $result = $conn->query($sql);
+
+    
+    if ($result && $result->num_rows > 0) {
+        
+        while ($row = $result->fetch_assoc()) {
+        
+            $response["results"][] = [
+                "recommendation" => $row['recommended_item'],
+                "keyword" => $row['user_input'],
+                "category" => "Catalog" 
+            ];
+        }
+    } else {
+        
+        $response["error"] = "No items found in catalog.";
+    }
+}
+
 if (isset($_GET['q'])) {
     $input = trim($_GET['q']);
     
