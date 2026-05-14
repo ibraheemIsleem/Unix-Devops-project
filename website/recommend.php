@@ -2,9 +2,9 @@
 
 header('Content-Type: application/json');
 
-$servername = "localhost";
+$servername = "db";
 $username = "root";
-$password = "123456";
+$password = "123";
 $dbname = "recommendation_db";
 
 $conn = new mysqli($servername, $username, $password, $dbname);

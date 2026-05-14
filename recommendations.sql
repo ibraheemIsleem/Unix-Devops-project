@@ -1,4 +1,4 @@
-CREATE DATABASE IF NOT EXISTS recommendation_db;
+/*CREATE DATABASE IF NOT EXISTS recommendation_db;*/
 
 
 USE recommendation_db;
