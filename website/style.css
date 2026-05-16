@@ -34,7 +34,7 @@
      position: fixed;
      inset: 0;
      background-image:
-         linear-gradient(rgba(233, 20, 20, 0.03) 1px, transparent 1px),
+         linear-gradient(rgba(0, 229, 160, 0.03) 1px, transparent 1px),
          linear-gradient(90deg, rgba(0, 229, 160, 0.03) 1px, transparent 1px);
      background-size: 40px 40px;
      pointer-events: none;
