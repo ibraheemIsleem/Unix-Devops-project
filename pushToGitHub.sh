@@ -1,8 +1,8 @@
 #!/bin/bash
 
-if [ $# -ne 3 ]
+if [ $# -ne 4 ]
 then
-    echo "Usage: ./PushToGitHub.sh <folder_name> <commit_message> <file_name>"
+    echo "Usage: ./PushToGitHub.sh <folder_name> <commit_message> <file_name> <branch_name>"
     exit 1
 fi
 
@@ -50,11 +50,13 @@ else
     echo "Remote repo already connected"
 fi
 
+git checkout "$4" 2>/dev/null || git checkout -b "$4"
+
 echo "Fetching remote changes"
 git fetch
 
 echo "Pulling remote changes"
-git pull origin main
+git pull origin "$4"
 
 if [ $? -eq 0 ]
 then
@@ -90,7 +92,7 @@ else
 fi
 
 echo "Pushing changes to remote repo"
-git push -u origin main
+git push -u origin "$4"
 
 if [ $? -eq 0 ]
 then
