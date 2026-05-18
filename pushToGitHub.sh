@@ -6,6 +6,8 @@ then
     exit 1
 fi
 
+BRANCH_NAME="$4"
+
 cd "$1" || exit 1
 
 echo "Checking if folder has a local repo"
@@ -50,13 +52,13 @@ else
     echo "Remote repo already connected"
 fi
 
-git checkout "$4" 2>/dev/null || git checkout -b "$4"
+git checkout "$BRANCH_NAME" 2>/dev/null || git checkout -b "$BRANCH_NAME"
 
 echo "Fetching remote changes"
 git fetch
 
 echo "Pulling remote changes"
-git pull origin "$4"
+git pull origin "$BRANCH_NAME"
 
 if [ $? -eq 0 ]
 then
@@ -92,7 +94,7 @@ else
 fi
 
 echo "Pushing changes to remote repo"
-git push -u origin "$4"
+git push -u origin "$BRANCH_NAME"
 
 if [ $? -eq 0 ]
 then
